@@ -23,5 +23,9 @@ public class CalculatorController {
         }
         return num1;
     }
+    @GetMapping("/calculate/{num1}/{num2}/{operation}")
+    public String greetByName(@PathVariable int num1,@PathVariable int num2,@PathVariable String operation ){
+        return "Operation: " + operation + " Total: " + operation(num1, num2, operation);
+    }
 
 }
