@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalculatorController {
     @GetMapping("/calculate")
-    public String calculate(@RequestParam int num1,@RequestParam int num2, @RequestParam String operation){
-        return "Operation: " + operation + " Total: " + operation(num1, num2, operation);
+    public Calculator calculate(@RequestParam int num1,@RequestParam int num2, @RequestParam String operation){
+        Calculator ans = new Calculator(num1,num2, operation);
+        return ans;
     }
     public int operation(int num1,int num2,String op){
         switch(op){
@@ -24,8 +25,7 @@ public class CalculatorController {
         return num1;
     }
     @GetMapping("/calculate/{num1}/{num2}/{operation}")
-    public String greetByName(@PathVariable int num1,@PathVariable int num2,@PathVariable String operation ){
-        return "Operation: " + operation + " Total: " + operation(num1, num2, operation);
-    }
-
+    public Calculator calcPathV(@PathVariable int num1,@PathVariable int num2,@PathVariable String operation ){
+        Calculator ans = new Calculator(num1,num2, operation);
+        return ans;}
 }
